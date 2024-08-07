@@ -1,0 +1,122 @@
+import React from 'react';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import { Link } from 'react-scroll';
+
+// Import components (to be created later)
+import Header from './components/Header';
+import About from './components/About';
+import Projects from './components/Projects';
+import Skills from './components/Skills';
+import Education from './components/Education';
+import Contact from './components/Contact';
+
+const AppContainer = styled.div`
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+`;
+
+const Nav = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  padding: 1rem;
+`;
+
+const NavList = styled.ul`
+  display: flex;
+  justify-content: center;
+  list-style: none;
+`;
+
+const NavItem = styled.li`
+  margin: 0 1rem;
+`;
+
+const NavLink = styled(Link)`
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #3498db;
+  }
+`;
+
+const Section = styled(motion.section)`
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+function App() {
+  return (
+    <AppContainer>
+      <Nav>
+        <NavList>
+          <NavItem><NavLink to="about" smooth={true} duration={500}>About</NavLink></NavItem>
+          <NavItem><NavLink to="projects" smooth={true} duration={500}>Projects</NavLink></NavItem>
+          <NavItem><NavLink to="skills" smooth={true} duration={500}>Skills</NavLink></NavItem>
+          <NavItem><NavLink to="education" smooth={true} duration={500}>Education</NavLink></NavItem>
+          <NavItem><NavLink to="contact" smooth={true} duration={500}>Contact</NavLink></NavItem>
+        </NavList>
+      </Nav>
+
+      <Header />
+
+      <Section
+        id="about"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <About />
+      </Section>
+
+      <Section
+        id="projects"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <Projects />
+      </Section>
+
+      <Section
+        id="skills"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <Skills />
+      </Section>
+
+      <Section
+        id="education"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <Education />
+      </Section>
+
+      <Section
+        id="contact"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <Contact />
+      </Section>
+    </AppContainer>
+  );
+}
+
+export default App;
