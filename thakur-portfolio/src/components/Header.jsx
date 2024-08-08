@@ -11,6 +11,17 @@ const HeaderContainer = styled.header`
   text-align: center;
   color: #333;
   background-color: #f8f8f8;
+  position: relative;
+  overflow: hidden;
+`;
+
+const BackgroundShape = styled(motion.div)`
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #4a90e2, #63b3ed);
+  opacity: 0.1;
 `;
 
 const Name = styled(motion.h1)`
@@ -44,27 +55,48 @@ const Button = styled(motion.a)`
   }
 `;
 
+const ProfileImage = styled(motion.div)`
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #ddd;
+  margin-bottom: 2rem;
+  background-image: url('path_to_your_image.jpg');
+  background-size: cover;
+  background-position: center;
+`;
+
 function Header() {
   return (
     <HeaderContainer>
+      <BackgroundShape
+        initial={{ scale: 0, x: '-50%', y: '-50%' }}
+        animate={{ scale: 1, x: 0, y: 0 }}
+        transition={{ duration: 1, ease: 'easeOut' }}
+      />
+      <ProfileImage
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      />
       <Name
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 1, delay: 0.7 }}
       >
         Thakur Jaideep Singh
       </Name>
       <Title
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.5 }}
+        transition={{ duration: 1, delay: 1 }}
       >
         Data Science and AI Enthusiast
       </Title>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
+        transition={{ duration: 1, delay: 1.3 }}
       >
         <Button
           href="https://drive.google.com/file/d/1Hamv-1WGar02FPeROYj24-PhTfO4eyDw/view?usp=sharing"

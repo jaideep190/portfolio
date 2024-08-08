@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
-
-// Import components
 import Header from './components/Header';
 import About from './components/About';
 import Projects from './components/Projects';
@@ -17,7 +15,7 @@ const AppContainer = styled.div`
   background-color: #f8f8f8;
 `;
 
-const Nav = styled.nav`
+const Nav = styled(motion.nav)`
   position: fixed;
   top: 0;
   left: 0;
@@ -76,18 +74,29 @@ const Section = styled(motion.section)`
   justify-content: center;
 `;
 
+const navVariants = {
+  hidden: { opacity: 0, y: -50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
+
 function App() {
   return (
     <AppContainer>
-      <Nav>
-        <NavList>
-          <NavItem><NavLink to="about" smooth={true} duration={500}>About</NavLink></NavItem>
-          <NavItem><NavLink to="projects" smooth={true} duration={500}>Projects</NavLink></NavItem>
-          <NavItem><NavLink to="skills" smooth={true} duration={500}>Skills</NavLink></NavItem>
-          <NavItem><NavLink to="education" smooth={true} duration={500}>Education</NavLink></NavItem>
-          <NavItem><NavLink to="contact" smooth={true} duration={500}>Contact</NavLink></NavItem>
-        </NavList>
-      </Nav>
+      <AnimatePresence>
+        <Nav
+          variants={navVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <NavList>
+            <NavItem><NavLink to="about" smooth={true} duration={500}>About</NavLink></NavItem>
+            <NavItem><NavLink to="projects" smooth={true} duration={500}>Projects</NavLink></NavItem>
+            <NavItem><NavLink to="skills" smooth={true} duration={500}>Skills</NavLink></NavItem>
+            <NavItem><NavLink to="education" smooth={true} duration={500}>Education</NavLink></NavItem>
+            <NavItem><NavLink to="contact" smooth={true} duration={500}>Contact</NavLink></NavItem>
+          </NavList>
+        </Nav>
+      </AnimatePresence>
 
       <Header />
 

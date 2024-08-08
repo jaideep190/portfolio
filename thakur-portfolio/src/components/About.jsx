@@ -22,20 +22,47 @@ const Content = styled(motion.p)`
   color: #555;
 `;
 
+const titleVariants = {
+  hidden: { opacity: 0, y: -50 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { 
+      type: "spring",
+      damping: 10,
+      stiffness: 100
+    }
+  }
+};
+
+const contentVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { 
+      type: "spring",
+      damping: 10,
+      stiffness: 100,
+      delay: 0.5
+    }
+  }
+};
+
 function About() {
   return (
     <AboutContainer>
       <Title
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        variants={titleVariants}
+        initial="hidden"
+        animate="visible"
       >
         About Me
       </Title>
       <Content
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.5 }}
+        variants={contentVariants}
+        initial="hidden"
+        animate="visible"
       >
         I'm a passionate B.Tech student in Data Science and Artificial
         Intelligence at IIIT Naya Raipur. With a strong foundation in
