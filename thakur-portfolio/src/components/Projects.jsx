@@ -6,7 +6,7 @@ const ProjectsContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 4rem 2rem;
-//   background: linear-gradient(to bottom, #0a192f, #112240);  
+  background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
   color: #8892b0;
 `;
 
@@ -15,7 +15,7 @@ const Title = styled(motion.h2)`
   margin-bottom: 3rem;
   text-align: center;
   font-family: 'Orbitron', sans-serif;
-  color: #333333;
+  color: #64ffda;
   text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
 `;
 
@@ -26,7 +26,7 @@ const ProjectGrid = styled(motion.div)`
 `;
 
 const ProjectCard = styled(motion.div)`
-  background-color: #1e3a8a;
+  background: linear-gradient(135deg, #1e3a8a 0%, #2a4a8a 100%);
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -40,7 +40,7 @@ const ProjectCard = styled(motion.div)`
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(235deg, #89ff00, #010615, #00bcd4);
+    background: linear-gradient(235deg, #89ff00, #00bcd4, #2575fc);
     z-index: -1;
     filter: blur(10px);
     opacity: 0;
@@ -50,7 +50,6 @@ const ProjectCard = styled(motion.div)`
   &:hover {
     transform: translateY(-5px) scale(1.03);
     box-shadow: 0 6px 12px rgba(100, 255, 218, 0.2);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
     &:before {
       opacity: 1;
@@ -88,9 +87,9 @@ const ProjectLink = styled(motion.a)`
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #00bcd4;
-    box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-color: #2575fc;
+    color: white;
+    box-shadow: 0 0 15px rgba(37, 117, 252, 0.5);
   }
 `;
 
@@ -174,23 +173,20 @@ function Projects() {
                   href={project.link} 
                   target="_blank" 
                   rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                 >
                   View Project
                 </ProjectLink>
               )}
-              &nbsp; {/* Adding space here */}
-              &nbsp; {/* Adding more space here */}
-              &nbsp; {/* Adding more space here */}
-              &nbsp; {/* Adding more space here */}
-              &nbsp; {/* Adding more space here */}
-              &nbsp; {/* Adding more space here */}
-              &nbsp; {/* Adding more space here */}
-              &nbsp; {/* Adding more space here */}
               {project.githubLink && (
                 <ProjectLink 
                   href={project.githubLink} 
                   target="_blank" 
                   rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  style={{ marginLeft: '1rem' }}
                 >
                   GitHub
                 </ProjectLink>

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, useAnimation } from 'framer-motion';
+import BackgroundAnimation from './BackgroundAnimation';  // Import the BackgroundAnimation component
 
 const HeaderContainer = styled.header`
   height: 100vh;
@@ -9,7 +10,6 @@ const HeaderContainer = styled.header`
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
   color: white;
   overflow: hidden;
   position: relative;
@@ -20,18 +20,20 @@ const Name = styled(motion.h1)`
   margin-bottom: 1rem;
   font-family: 'Orbitron', sans-serif;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  z-index: 1;
 `;
 
 const Title = styled(motion.h2)`
   font-size: 2rem;
   margin-bottom: 2rem;
   font-family: 'Source Code Pro', monospace;
+  z-index: 1;
 `;
 
 const Button = styled(motion.a)`
   padding: 0.75rem 1.5rem;
-  background-color: white;
-  color: #2575fc;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
@@ -39,6 +41,9 @@ const Button = styled(motion.a)`
   font-family: 'Source Code Pro', monospace;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 1;
 
   &:before {
     content: '';
@@ -61,39 +66,7 @@ const Button = styled(motion.a)`
   }
 
   &:hover {
-    background-color: #2575fc;
-    color: white;
-  }
-`;
-
-const BackgroundAnimation = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
-  
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-      linear-gradient(45deg, #0000ff 25%, transparent 25%),
-      linear-gradient(-45deg, #0000ff 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, #0000ff 75%),
-      linear-gradient(-45deg, transparent 75%, #0000ff 75%);
-    background-size: 20px 20px;
-    opacity: 0.1;
-    animation: backgroundMove 10s linear infinite;
-  }
-
-  @keyframes backgroundMove {
-    0% { background-position: 0 0, 10px 0, 10px -10px, 0px 10px; }
-    100% { background-position: 20px 20px, 30px 20px, 30px 10px, 20px 30px; }
+    background-color: rgba(255, 255, 255, 0.2);
   }
 `;
 
@@ -102,7 +75,8 @@ const CodeSnippet = styled(motion.div)`
   font-size: 1rem;
   opacity: 0.7;
   position: absolute;
-  color: #00ff00;
+  color: #00ffff;
+  z-index: 1;
 `;
 
 function Header() {
@@ -119,7 +93,7 @@ function Header() {
 
   return (
     <HeaderContainer>
-      <BackgroundAnimation />
+      <BackgroundAnimation /> 
       <Name
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
