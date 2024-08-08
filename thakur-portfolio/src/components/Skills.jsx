@@ -6,15 +6,14 @@ const SkillsContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 4rem 2rem;
-  color: #8892b0;
 `;
 
 const Title = styled(motion.h2)`
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-align: center;
-  color: #64ffda;
-  text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+  color: #333;
+  font-weight: 700;
 `;
 
 const SkillsGrid = styled.div`
@@ -25,44 +24,24 @@ const SkillsGrid = styled.div`
 `;
 
 const SkillCategory = styled(motion.div)`
-  background: linear-gradient(145deg, #1e3a8a, #2a4a8a);
+  background: white;
   border-radius: 15px;
   padding: 2rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   flex: 1;
   min-width: 250px;
-  position: relative;
-  overflow: hidden;
-  
-  &:before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(235deg, #89ff00, #00bcd4, #2575fc);
-    z-index: -1;
-    filter: blur(10px);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
 
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(100, 255, 218, 0.3);
-
-    &:before {
-      opacity: 1;
-    }
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 `;
 
 const CategoryTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
-  color: #64ffda;
+  color: #333;
 `;
 
 const SkillList = styled.ul`
@@ -73,7 +52,7 @@ const SkillList = styled.ul`
 const SkillItem = styled(motion.li)`
   font-size: 1.1rem;
   margin-bottom: 0.8rem;
-  color: #8892b0;
+  color: #555;
 `;
 
 const skillCategories = [
@@ -115,7 +94,7 @@ function Skills() {
             key={index}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
             whileHover={{ scale: 1.05 }}
           >
             <CategoryTitle>{category.title}</CategoryTitle>

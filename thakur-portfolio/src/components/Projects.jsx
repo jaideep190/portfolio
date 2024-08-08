@@ -6,17 +6,14 @@ const ProjectsContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
-  color: #8892b0;
 `;
 
 const Title = styled(motion.h2)`
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 3rem;
   text-align: center;
-  font-family: 'Orbitron', sans-serif;
-  color: #64ffda;
-  text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+  color: #333;
+  font-weight: 700;
 `;
 
 const ProjectGrid = styled(motion.div)`
@@ -26,34 +23,15 @@ const ProjectGrid = styled(motion.div)`
 `;
 
 const ProjectCard = styled(motion.div)`
-  background: linear-gradient(135deg, #1e3a8a 0%, #2a4a8a 100%);
+  background: white;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: all 0.3s ease;
-  position: relative;
-
-  &:before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(235deg, #89ff00, #00bcd4, #2575fc);
-    z-index: -1;
-    filter: blur(10px);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
 
   &:hover {
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 6px 12px rgba(100, 255, 218, 0.2);
-
-    &:before {
-      opacity: 1;
-    }
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 `;
 
@@ -64,32 +42,28 @@ const ProjectContent = styled.div`
 const ProjectTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  font-family: 'Source Code Pro', monospace;
-  color: #e6f1ff;
+  color: #333;
 `;
 
 const ProjectDescription = styled.p`
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1rem;
-  font-family: 'Roboto Mono', monospace;
+  color: #555;
 `;
 
 const ProjectLink = styled(motion.a)`
   display: inline-block;
   padding: 0.5rem 1rem;
-  background-color: #64ffda;
-  color: #0a192f;
+  background-color: #4a90e2;
+  color: white;
   text-decoration: none;
   border-radius: 5px;
-  font-family: 'Source Code Pro', monospace;
-  font-weight: bold;
+  font-weight: 500;
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #2575fc;
-    color: white;
-    box-shadow: 0 0 15px rgba(37, 117, 252, 0.5);
+    background-color: #3a7bc8;
   }
 `;
 
@@ -120,48 +94,20 @@ const projects = [
   }
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-
-const cardVariants = {
-  hidden: { y: 50, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: 'spring',
-      damping: 12,
-      stiffness: 100
-    }
-  }
-};
-
 function Projects() {
   return (
     <ProjectsContainer>
       <Title
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, type: 'spring', bounce: 0.5 }}
+        transition={{ duration: 1 }}
       >
-        &lt;Projects /&gt;
+        Projects
       </Title>
-      <ProjectGrid
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
+      <ProjectGrid>
         {projects.map((project, index) => (
           <ProjectCard
             key={index}
-            variants={cardVariants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

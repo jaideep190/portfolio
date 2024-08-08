@@ -6,73 +6,52 @@ const EducationContainer = styled.div`
   max-width: 800px;
   margin: 0 auto;
   padding: 4rem 2rem;
-  color: #8892b0;
 `;
 
 const Title = styled(motion.h2)`
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-align: center;
-  color: #64ffda;
-  text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+  color: #333;
+  font-weight: 700;
 `;
 
 const EducationItem = styled(motion.div)`
-  background: linear-gradient(135deg, #1e3a8a 0%, #2a4a8a 100%);
+  background: white;
   border-radius: 10px;
   padding: 1.5rem;
   margin-bottom: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-
-  &:before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(235deg, #89ff00, #00bcd4, #2575fc);
-    z-index: -1;
-    filter: blur(10px);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
-
-    &:before {
-      opacity: 1;
-    }
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 `;
 
 const SchoolName = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  color: #64ffda;
+  color: #333;
 `;
 
 const Degree = styled.h4`
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: #e6f1ff;
+  color: #555;
 `;
 
 const Period = styled.p`
   font-size: 1rem;
-  color: #8892b0;
+  color: #777;
   margin-bottom: 0.5rem;
 `;
 
 const GPA = styled.p`
   font-size: 1rem;
   font-weight: bold;
-  color: #64ffda;
+  color: #4a90e2;
 `;
 
 const educationData = [

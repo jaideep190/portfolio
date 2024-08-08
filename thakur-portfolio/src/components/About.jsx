@@ -11,12 +11,15 @@ const Title = styled(motion.h2)`
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-align: center;
+  color: #333;
+  font-weight: 700;
 `;
 
 const Content = styled(motion.p)`
   font-size: 1.1rem;
   line-height: 1.6;
   text-align: justify;
+  color: #555;
 `;
 
 function About() {

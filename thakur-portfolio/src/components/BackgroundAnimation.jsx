@@ -3,12 +3,12 @@ import { useSpring, animated } from '@react-spring/web';
 
 const BackgroundAnimation = () => {
   const canvasRef = useRef(null);
-  const particlesRef = useRef([]);
+  const elementsRef = useRef([]);
   const mouseRef = useRef({ x: 0, y: 0 });
 
   const props = useSpring({
     from: { opacity: 0 },
-    to: { opacity: 0.2 },
+    to: { opacity: 0.3 },
     config: { duration: 3000 },
   });
 
@@ -22,80 +22,69 @@ const BackgroundAnimation = () => {
       canvas.height = window.innerHeight;
     };
 
-    const createParticles = () => {
-      const particlesArray = [];
-      const numberOfParticles = 100;
+    const createElements = () => {
+      const elementsArray = [];
+      const numberOfElements = 50;
 
-      for (let i = 0; i < numberOfParticles; i++) {
-        particlesArray.push({
+      for (let i = 0; i < numberOfElements; i++) {
+        elementsArray.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 3 + 1,
-          speedX: Math.random() * 3 - 1.5,
-          speedY: Math.random() * 3 - 1.5
+          size: Math.random() * 100 + 50,
+          speedX: Math.random() * 0.5 - 0.25,
+          speedY: Math.random() * 0.5 - 0.25,
+          opacity: Math.random() * 0.5 + 0.1,
         });
       }
 
-      return particlesArray;
+      return elementsArray;
     };
 
-    const drawParticles = () => {
+    const drawElements = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#64ffda';
-      ctx.strokeStyle = '#64ffda';
 
-      particlesRef.current.forEach((particle, index) => {
+      elementsRef.current.forEach((element) => {
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        const gradient = ctx.createRadialGradient(
+          element.x, element.y, 0,
+          element.x, element.y, element.size
+        );
+        gradient.addColorStop(0, `rgba(100, 255, 218, ${element.opacity})`);
+        gradient.addColorStop(1, 'rgba(100, 255, 218, 0)');
+        ctx.fillStyle = gradient;
+        ctx.arc(element.x, element.y, element.size, 0, Math.PI * 2);
         ctx.fill();
 
-        // Update particle position
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
+        // Update element position
+        element.x += element.speedX;
+        element.y += element.speedY;
 
-        // Bounce off edges
-        if (particle.x > canvas.width || particle.x < 0) {
-          particle.speedX *= -1;
-        }
-        if (particle.y > canvas.height || particle.y < 0) {
-          particle.speedY *= -1;
-        }
+        // Wrap around edges
+        if (element.x > canvas.width + element.size) element.x = -element.size;
+        if (element.x < -element.size) element.x = canvas.width + element.size;
+        if (element.y > canvas.height + element.size) element.y = -element.size;
+        if (element.y < -element.size) element.y = canvas.height + element.size;
 
-        // Connect particles
-        for (let j = index + 1; j < particlesRef.current.length; j++) {
-          const dx = particle.x - particlesRef.current[j].x;
-          const dy = particle.y - particlesRef.current[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 100) {
-            ctx.beginPath();
-            ctx.moveTo(particle.x, particle.y);
-            ctx.lineTo(particlesRef.current[j].x, particlesRef.current[j].y);
-            ctx.stroke();
-          }
-        }
-
-        // Connect to mouse
-        const dx = particle.x - mouseRef.current.x;
-        const dy = particle.y - mouseRef.current.y;
+        // Interact with mouse
+        const dx = element.x - mouseRef.current.x;
+        const dy = element.y - mouseRef.current.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < 150) {
-          ctx.beginPath();
-          ctx.moveTo(particle.x, particle.y);
-          ctx.lineTo(mouseRef.current.x, mouseRef.current.y);
-          ctx.stroke();
+        if (distance < 300) {
+          const angle = Math.atan2(dy, dx);
+          const force = (300 - distance) / 30;
+          element.x += Math.cos(angle) * force;
+          element.y += Math.sin(angle) * force;
         }
       });
     };
 
     const animate = () => {
-      drawParticles();
+      drawElements();
       animationFrameId = requestAnimationFrame(animate);
     };
 
     resizeCanvas();
-    particlesRef.current = createParticles();
+    elementsRef.current = createElements();
     animate();
 
     window.addEventListener('resize', resizeCanvas);

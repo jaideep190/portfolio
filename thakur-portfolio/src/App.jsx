@@ -12,9 +12,9 @@ import Education from './components/Education';
 import Contact from './components/Contact';
 
 const AppContainer = styled.div`
-  font-family: 'Source Code Pro', monospace;
-  color: #64ffda;
-  background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  background-color: #f8f8f8;
 `;
 
 const Nav = styled.nav`
@@ -23,10 +23,10 @@ const Nav = styled.nav`
   left: 0;
   right: 0;
   z-index: 10;
-  background: rgba(10, 25, 47, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(5px);
   padding: 1rem;
-  border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const NavList = styled.ul`
@@ -42,14 +42,13 @@ const NavItem = styled.li`
 const NavLink = styled(Link)`
   cursor: pointer;
   font-weight: 500;
-  color: #64ffda;
+  color: #333;
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
 
   &:hover {
-    color: #2575fc;
-    text-shadow: 0 0 5px rgba(100, 255, 218, 0.5);
+    color: #4a90e2;
   }
 
   &::after {
@@ -59,7 +58,7 @@ const NavLink = styled(Link)`
     height: 2px;
     bottom: -5px;
     left: 50%;
-    background-color: #64ffda;
+    background-color: #4a90e2;
     transition: all 0.3s ease;
   }
 
@@ -77,41 +76,9 @@ const Section = styled(motion.section)`
   justify-content: center;
 `;
 
-const BackgroundAnimation = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  opacity: 0.1;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-      linear-gradient(45deg, #64ffda 25%, transparent 25%),
-      linear-gradient(-45deg, #64ffda 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, #64ffda 75%),
-      linear-gradient(-45deg, transparent 75%, #64ffda 75%);
-    background-size: 20px 20px;
-    animation: backgroundMove 20s linear infinite;
-  }
-
-  @keyframes backgroundMove {
-    0% { background-position: 0 0, 10px 0, 10px -10px, 0px 10px; }
-    100% { background-position: 20px 20px, 30px 20px, 30px 10px, 20px 30px; }
-  }
-`;
-
 function App() {
   return (
     <AppContainer>
-      <BackgroundAnimation />
       <Nav>
         <NavList>
           <NavItem><NavLink to="about" smooth={true} duration={500}>About</NavLink></NavItem>
