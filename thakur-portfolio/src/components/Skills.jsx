@@ -62,15 +62,15 @@ const skillCategories = [
   },
   {
     title: "Frameworks",
-    skills: ["React", "Node.js", "Express", "Flask", "Django", "Chaquopy", "Material-UI"]
+    skills: ["React", "Node.js", "Express", "Flask", "Django", "Chaquopy"]
   },
   {
     title: "Developer Tools",
-    skills: ["Git", "Docker", "VS Code", "Jupyter Notebook", "Vercel", "Render"]
+    skills: ["Git", "VS Code", "Jupyter Notebook"]
   },
   {
     title: "Deployment & Databases",
-    skills: ["Render", "Vercel", "Netlify", "MongoDB", "MySQL", "Sequelize"]
+    skills: ["Render", "Vercel", "MongoDB", "MySQL", "Sequelize"]
   },
   {
     title: "Libraries",
