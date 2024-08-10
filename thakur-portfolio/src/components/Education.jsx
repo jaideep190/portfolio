@@ -59,7 +59,7 @@ const educationData = [
     school: "IIIT Naya Raipur",
     degree: "B.Tech in Data Science and Artificial Intelligence",
     period: "Nov 2022 – present",
-    gpa: "CGPA: 8.89/10"
+    gpa: "CGPA: 8.98/10"
   },
   {
     school: "Valley Oak Junior College",
