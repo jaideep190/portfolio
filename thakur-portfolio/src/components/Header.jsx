@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
+import BackgroundAnimation from './BackgroundAnimation';
+import profileImage from '../assets/dp.png';
 
 const HeaderContainer = styled.header`
   height: 100vh;
@@ -10,32 +12,9 @@ const HeaderContainer = styled.header`
   align-items: center;
   text-align: center;
   color: #333;
-  background-color: #f8f8f8;
+  background-color: #f0f0f0;
   position: relative;
   overflow: hidden;
-`;
-
-const BackgroundShape = styled(motion.div)`
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, #4a90e2, #63b3ed);
-  opacity: 0.1;
-  transform-origin: center;
-  animation: shape-animation 20s linear infinite;
-
-  @keyframes shape-animation {
-    0% {
-      transform: scale(1) rotate(0deg);
-    }
-    50% {
-      transform: scale(1.5) rotate(180deg);
-    }
-    100% {
-      transform: scale(1) rotate(360deg);
-    }
-  }
 `;
 
 const Name = styled(motion.h1)`
@@ -44,6 +23,7 @@ const Name = styled(motion.h1)`
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 `;
 
 const Title = styled(motion.h2)`
@@ -53,6 +33,7 @@ const Title = styled(motion.h2)`
   font-weight: 400;
   color: #666;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 `;
 
 const Button = styled(motion.a)`
@@ -66,6 +47,7 @@ const Button = styled(motion.a)`
   margin: 0.5rem;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 
   &:hover {
     background-color: #3a7bc8;
@@ -80,33 +62,17 @@ const ProfileImage = styled(motion.div)`
   border-radius: 50%;
   background-color: #ddd;
   margin-bottom: 2rem;
-  background-image: url('path_to_your_image.jpg');
-  background-size: cover;
+  background-image: url(${profileImage});  background-size: cover;
   background-position: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transform-origin: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
+  z-index: 1;
 `;
 
 function Header() {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const handleMouseMove = (event) => {
-    x.set(event.clientX - window.innerWidth / 2);
-    y.set(event.clientY - window.innerHeight / 2);
-  };
-
-  const profileImageScale = useTransform(x, [-100, 100], [1, 1.1]);
-  const profileImageRotate = useTransform(y, [-100, 100], [-10, 10]);
-
   return (
-    <HeaderContainer onMouseMove={handleMouseMove}>
-      <BackgroundShape />
+    <HeaderContainer>
+      <BackgroundAnimation />
       <ProfileImage
-        style={{
-          scale: profileImageScale,
-          rotate: profileImageRotate,
-        }}
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}

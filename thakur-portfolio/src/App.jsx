@@ -8,6 +8,7 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Education from './components/Education';
 import Contact from './components/Contact';
+import BackgroundAnimation from './components/BackgroundAnimation';
 
 const AppContainer = styled.div`
   font-family: 'Montserrat', sans-serif;
@@ -82,6 +83,7 @@ const navVariants = {
 function App() {
   return (
     <AppContainer>
+      
       <AnimatePresence>
         <Nav
           variants={navVariants}
@@ -97,15 +99,17 @@ function App() {
           </NavList>
         </Nav>
       </AnimatePresence>
-
+      
+      
       <Header />
-
+      
       <Section
         id="about"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
+        
         <About />
       </Section>
 

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-
+import BackgroundAnimation from "./BackgroundAnimation";
 const AboutContainer = styled.div`
   max-width: 800px;
   margin: 0 auto;
