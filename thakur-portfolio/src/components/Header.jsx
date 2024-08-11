@@ -47,7 +47,9 @@ const Button = styled(motion.a)`
   margin: 0.5rem;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+  z-index: 10;  // Increased z-index
+  position: relative;  // Added position
+  pointer-events: auto;  // Added pointer-events
 
   &:hover {
     background-color: #3a7bc8;
