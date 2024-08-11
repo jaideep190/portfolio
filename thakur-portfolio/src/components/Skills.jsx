@@ -62,7 +62,7 @@ const skillCategories = [
   },
   {
     title: "Frameworks",
-    skills: ["React", "Node.js", "Express", "Flask", "Django", "Chaquopy"]
+    skills: ["React", "Node.js", "Express", "Flask"]
   },
   {
     title: "Developer Tools",
@@ -70,11 +70,11 @@ const skillCategories = [
   },
   {
     title: "Deployment & Databases",
-    skills: ["Render", "Vercel", "MongoDB", "MySQL", "Sequelize"]
+    skills: ["Render", "Vercel", "MongoDB", "MySQL"]
   },
   {
     title: "Libraries",
-    skills: ["TensorFlow", "Scikit-Learn", "OpenCV", "pandas", "NumPy", "Matplotlib", "Seaborn"]
+    skills: ["TensorFlow", "Scikit-Learn", "OpenCV", "pandas", "NumPy", "Matplotlib"]
   }
 ];
 
