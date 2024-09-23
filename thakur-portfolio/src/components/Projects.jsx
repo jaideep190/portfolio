@@ -78,7 +78,7 @@ const projects = [
     title: "MAGU-NET (smartBP)",
     description: "An Android application with TensorFlow Lite integration for real-time blood pressure prediction.",
     link: "https://magu-net-smartbp.vercel.app/",
-    githubLink: ""
+    githubLink: "https://drive.google.com/file/d/1zpYTLXo45w-gX77kJ8cRXxB94JZKDFwB/view"
   },
   {
     title: "L.M.S (In Progress)",
@@ -134,7 +134,7 @@ function Projects() {
                   whileTap={{ scale: 0.9 }}
                   style={{ marginLeft: '1rem' }}
                 >
-                  GitHub
+                  About
                 </ProjectLink>
               )}
             </ProjectContent>
