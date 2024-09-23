@@ -81,15 +81,15 @@ const projects = [
     githubLink: "https://drive.google.com/file/d/1zpYTLXo45w-gX77kJ8cRXxB94JZKDFwB/view"
   },
   {
-    title: "L.M.S (In Progress)",
-    description: "A Library Management System with RESTful API using Node.js, Express, and MySQL.",
-    link: "https://github.com/jaideep190/library-management-system",
-    githubLink: ""
-  },
-  {
     title: "Triboelectric IoT Security System",
     description: "A home security system using Triboelectricity-based sensors integrated with NodeMCU (ESP8266) and IFTTT.",
     link: "https://drive.google.com/file/d/1LxEA6wzpH99Ns3rQJv8mfHX8f-F4cfmm/view?usp=sharing",
+    githubLink: ""
+  },
+  {
+    title: "L.M.S (In Progress)",
+    description: "A Library Management System with RESTful API using Node.js, Express, and MySQL.",
+    link: "https://github.com/jaideep190/library-management-system",
     githubLink: ""
   }
 ];
